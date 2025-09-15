@@ -1,0 +1,68 @@
+pipeline {
+    agent any
+
+    environment {
+        IMAGE_NAME = "hyd.ocir.io/ax4qsxvnsmtm/miniprojectmlops"
+    }
+
+    stages {
+        stage('Install Dependencies') {
+            steps {
+                sh 'pip install -r requirements.txt'
+            }
+        }
+
+        stage('Run Tests / Local Training') {
+            steps {
+                sh 'python app.py'
+            }
+        }
+
+        stage('Archive Results') {
+            steps {
+                archiveArtifacts artifacts: 'output.csv', fingerprint: true
+            }
+        }
+
+        stage('Login to OCIR') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'ocir-creds', usernameVariable: 'OCI_USER', passwordVariable: 'OCI_PASS')]) {
+                    sh """
+                        echo $OCI_PASS | docker login hyd.ocir.io -u $OCI_USER --password-stdin
+                    """
+                }
+            }
+        }
+
+        stage('Build & Tag Docker Image') {
+            steps {
+                script {
+                    env.IMAGE_TAG = "${BUILD_NUMBER}"
+
+                    sh """
+                        docker build -t $IMAGE_NAME:$IMAGE_TAG .
+                        docker tag $IMAGE_NAME:$IMAGE_TAG $IMAGE_NAME:latest
+                    """
+                }
+            }
+        }
+
+        stage('Push to OCIR') {
+            steps {
+                sh """
+                    docker push $IMAGE_NAME:$IMAGE_TAG
+                    docker push $IMAGE_NAME:latest
+                """
+            }
+        }
+
+        stage('Deploy & Run Container') {
+            steps {
+                script {
+                    sh "docker rm -f mlops || true"
+                    sh "docker run -d --name mlops -p 9090:8080 $IMAGE_NAME:$IMAGE_TAG"
+                }
+            }
+        }
+    }
+}
