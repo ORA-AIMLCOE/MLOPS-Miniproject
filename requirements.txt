@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 pandas
 scikit-learn
 numpy
+=======
+pandas
+scikit-learn
+numpy
+>>>>>>> master
