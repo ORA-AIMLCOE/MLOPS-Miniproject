@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     triggers {
-        pollSCM('* * * * *')
+        pollSCM('* * * * *') // poll every minute
     }
 
     stages {
@@ -15,11 +15,8 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    // Get short commit hash
                     def commitHash = bat(script: 'git rev-parse --short HEAD', returnStdout: true).trim()
-                    echo "Commit hash: ${commitHash}"
-
-                    // Build Docker image with clean tag
+                    echo "Building Docker image with tag: pothole-detection:${commitHash}"
                     bat "docker build -t pothole-detection:${commitHash} ."
                 }
             }
@@ -29,6 +26,7 @@ pipeline {
             steps {
                 script {
                     def commitHash = bat(script: 'git rev-parse --short HEAD', returnStdout: true).trim()
+                    echo "Running container pothole-detection:${commitHash}"
                     bat "docker run --rm pothole-detection:${commitHash}"
                 }
             }
