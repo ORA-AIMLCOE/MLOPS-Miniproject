@@ -1,9 +1,8 @@
 pipeline {
-    agent any  // You can change to 'docker' agent later for containerized builds
+    agent any
 
     triggers {
-        // Poll GitHub every 5 minutes for changes (you can replace with webhooks later)
-        pollSCM('* * * * *') // every minute
+        pollSCM('* * * * *')
     }
 
     stages {
@@ -16,8 +15,11 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    // Build Docker image with current commit hash as tag
+                    // Get short commit hash
                     def commitHash = bat(script: 'git rev-parse --short HEAD', returnStdout: true).trim()
+                    echo "Commit hash: ${commitHash}"
+
+                    // Build Docker image with clean tag
                     bat "docker build -t pothole-detection:${commitHash} ."
                 }
             }
@@ -26,7 +28,6 @@ pipeline {
         stage('Run Analysis') {
             steps {
                 script {
-                    // Run the container and execute app.py
                     def commitHash = bat(script: 'git rev-parse --short HEAD', returnStdout: true).trim()
                     bat "docker run --rm pothole-detection:${commitHash}"
                 }
