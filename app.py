@@ -23,5 +23,5 @@ cluster_to_class = {0: "probably pothole", 1: "probably speed bump"}
 data["class"] = data["cluster"].map(cluster_to_class)
 
 # Save output
-data.to_csv("output_1.csv", index=False)
+data.to_csv("output.csv", index=False)
 print("✅ Results saved to output.csv")
