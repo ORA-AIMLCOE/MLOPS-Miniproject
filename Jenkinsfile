@@ -3,7 +3,7 @@ pipeline {
 
     triggers {
         // Poll GitHub every 5 minutes for changes (you can replace with webhooks later)
-        pollSCM('H/5 * * * *')
+        pollSCM('H/1 * * * *')
     }
 
     stages {
