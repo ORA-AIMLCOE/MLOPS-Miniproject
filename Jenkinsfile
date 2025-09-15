@@ -17,8 +17,8 @@ pipeline {
             steps {
                 script {
                     // Build Docker image with current commit hash as tag
-                    def commitHash = sh(returnStdout: true, script: 'git rev-parse --short HEAD').trim()
-                    sh "docker build -t pothole-detection:${commitHash} ."
+                    def commitHash = bat(script: 'git rev-parse --short HEAD', returnStdout: true).trim()
+                    bat "docker build -t pothole-detection:${commitHash} ."
                 }
             }
         }
@@ -27,8 +27,8 @@ pipeline {
             steps {
                 script {
                     // Run the container and execute app.py
-                    def commitHash = sh(returnStdout: true, script: 'git rev-parse --short HEAD').trim()
-                    sh "docker run --rm pothole-detection:${commitHash}"
+                    def commitHash = bat(script: 'git rev-parse --short HEAD', returnStdout: true).trim()
+                    bat "docker run --rm pothole-detection:${commitHash}"
                 }
             }
         }
