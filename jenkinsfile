@@ -1,67 +1,41 @@
 pipeline {
-    agent any
+    agent any  // You can change to 'docker' agent later for containerized builds
 
-    environment {
-        IMAGE_NAME = "hyd.ocir.io/ax4qsxvnsmtm/miniprojectmlops"
+    triggers {
+        // Poll GitHub every 5 minutes for changes (you can replace with webhooks later)
+        pollSCM('H/5 * * * *')
     }
 
     stages {
-        stage('Install Dependencies') {
+        stage('Checkout') {
             steps {
-                sh 'pip install -r requirements.txt'
+                checkout scm
             }
         }
 
-        stage('Run Tests / Local Training') {
+        stage('Build Docker Image') {
             steps {
-                sh 'python app.py'
+                script {
+                    // Build Docker image with current commit hash as tag
+                    def commitHash = sh(returnStdout: true, script: 'git rev-parse --short HEAD').trim()
+                    sh "docker build -t pothole-detection:${commitHash} ."
+                }
+            }
+        }
+
+        stage('Run Analysis') {
+            steps {
+                script {
+                    // Run the container and execute app.py
+                    def commitHash = sh(returnStdout: true, script: 'git rev-parse --short HEAD').trim()
+                    sh "docker run --rm pothole-detection:${commitHash}"
+                }
             }
         }
 
         stage('Archive Results') {
             steps {
                 archiveArtifacts artifacts: 'output.csv', fingerprint: true
-            }
-        }
-
-        stage('Login to OCIR') {
-            steps {
-                withCredentials([usernamePassword(credentialsId: 'ocir-creds', usernameVariable: 'OCI_USER', passwordVariable: 'OCI_PASS')]) {
-                    sh """
-                        echo $OCI_PASS | docker login hyd.ocir.io -u $OCI_USER --password-stdin
-                    """
-                }
-            }
-        }
-
-        stage('Build & Tag Docker Image') {
-            steps {
-                script {
-                    env.IMAGE_TAG = "${BUILD_NUMBER}"
-
-                    sh """
-                        docker build -t $IMAGE_NAME:$IMAGE_TAG .
-                        docker tag $IMAGE_NAME:$IMAGE_TAG $IMAGE_NAME:latest
-                    """
-                }
-            }
-        }
-
-        stage('Push to OCIR') {
-            steps {
-                sh """
-                    docker push $IMAGE_NAME:$IMAGE_TAG
-                    docker push $IMAGE_NAME:latest
-                """
-            }
-        }
-
-        stage('Deploy & Run Container') {
-            steps {
-                script {
-                    sh "docker rm -f mlops || true"
-                    sh "docker run -d --name mlops -p 9090:8080 $IMAGE_NAME:$IMAGE_TAG"
-                }
             }
         }
     }
