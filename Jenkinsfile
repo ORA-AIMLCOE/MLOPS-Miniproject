@@ -7,7 +7,8 @@ pipeline {
 
     environment {
         IMAGE_NAME = "pothole-detection"
-        IMAGE_TAG  = "${env.BUILD_NUMBER}"   // unique per build
+        IMAGE_TAG  = "${env.BUILD_NUMBER}" 
+        MLFLOW_TRACKING_URI = "http://localhost:5000"  
     }
 
     stages {
@@ -32,7 +33,11 @@ pipeline {
                 script {
                     bat """
                         echo Running container ${IMAGE_NAME}:${IMAGE_TAG}
-                        docker run --rm -v "%cd%:/app" -w /app ${IMAGE_NAME}:${IMAGE_TAG}
+                        docker run --rm ^
+                            -e MLFLOW_TRACKING_URI=${MLFLOW_TRACKING_URI} ^
+                            -v "%cd%:/app" ^
+                            -v "%cd%/mlruns:/app/mlruns" ^
+                            -w /app ${IMAGE_NAME}:${IMAGE_TAG}
                     """
                 }
             }
@@ -41,6 +46,7 @@ pipeline {
         stage('Archive Results') {
             steps {
                 archiveArtifacts artifacts: 'output.csv', onlyIfSuccessful: true
+                archiveArtifacts artifacts: 'mlruns/**', onlyIfSuccessful: true
             }
         }
     }
