@@ -5,6 +5,11 @@ pipeline {
         pollSCM('* * * * *') // poll every minute
     }
 
+    environment {
+        IMAGE_NAME = "pothole-detection"
+        IMAGE_TAG  = "${env.BUILD_NUMBER}"   // unique per build
+    }
+
     stages {
         stage('Checkout') {
             steps {
