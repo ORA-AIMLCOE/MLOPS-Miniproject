@@ -34,13 +34,8 @@ pipeline {
                     ).trim()
                     echo "Running container pothole-detection:${commitHash}"
         
-                    // Mount Jenkins workspace into /app inside container
-                    bat """
-                        docker run --rm ^
-                          -v %cd%:/workspace ^
-                          pothole-detection:${commitHash} ^
-                          python your_script.py --output /workspace/output.csv
-                    """
+                    // Run container and mount workspace (Windows path needs quotes)
+                    bat "docker run --rm -v \"%cd%:/workspace\" pothole-detection:${commitHash} python your_script.py --output /workspace/output.csv"
                 }
             }
         }
