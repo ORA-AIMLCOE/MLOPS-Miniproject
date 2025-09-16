@@ -32,7 +32,7 @@ pipeline {
                 script {
                     bat """
                         echo Running container ${IMAGE_NAME}:${IMAGE_TAG}
-                        docker run --rm -v %cd%:/app ${IMAGE_NAME}:${IMAGE_TAG}
+                        docker run --rm -v "%cd%:/app" -w /app ${IMAGE_NAME}:${IMAGE_TAG}
                     """
                 }
             }
