@@ -35,7 +35,7 @@ pipeline {
                     echo "Running container pothole-detection:${commitHash}"
         
                     // Run container and mount workspace (Windows path needs quotes)
-                    bat "docker run --rm -v \"%cd%:/workspace\" pothole-detection:${commitHash} python your_script.py --output /workspace/output.csv"
+                    bat "docker run --rm -v \"%cd%:/workspace\" pothole-detection:${commitHash} python app.py --output /workspace/output.csv"
                 }
             }
         }
