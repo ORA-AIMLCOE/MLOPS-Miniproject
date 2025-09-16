@@ -28,14 +28,10 @@ pipeline {
         stage('Run Analysis') {
             steps {
                 script {
-                    def commitHash = bat(
-                        script: '@echo off && git rev-parse --short HEAD',
-                        returnStdout: true
-                    ).trim()
-                    echo "Running container pothole-detection:${commitHash}"
-        
-                    // Run container and mount workspace (Windows path needs quotes)
-                    bat "docker run --rm -v \"%cd%:/workspace\" pothole-detection:${commitHash} python app.py --output /workspace/output.csv"
+                    bat """
+                        echo Running container ${IMAGE_NAME}:${IMAGE_TAG}
+                        docker run --rm -v %cd%:/app ${IMAGE_NAME}:${IMAGE_TAG} python app.py
+                    """
                 }
             }
         }
