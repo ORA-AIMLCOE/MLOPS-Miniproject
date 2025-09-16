@@ -34,7 +34,7 @@ pipeline {
                     bat """
                         echo Running container ${IMAGE_NAME}:${IMAGE_TAG}
                         docker run --rm ^
-                            -e MLFLOW_TRACKING_URI=${MLFLOW_TRACKING_URI} ^
+                            -e MLFLOW_TRACKING_URI=http://host.docker.internal:5000 ^
                             -v "%cd%:/app" ^
                             -v "%cd%/mlruns:/app/mlruns" ^
                             -w /app ${IMAGE_NAME}:${IMAGE_TAG}
