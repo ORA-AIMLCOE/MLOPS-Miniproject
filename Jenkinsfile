@@ -42,7 +42,10 @@ pipeline {
 
         stage('Archive Results') {
             steps {
-                archiveArtifacts artifacts: 'output.csv', fingerprint: true
+                script {
+                    bat "dir" // Debug: list files so we know where output.csv is
+                }
+                archiveArtifacts artifacts: '**/output.csv', fingerprint: true
             }
         }
     }
