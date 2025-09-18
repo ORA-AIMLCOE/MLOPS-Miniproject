@@ -14,7 +14,7 @@ mlflow.set_tracking_uri(os.getenv("MLFLOW_TRACKING_URI", default_tracking))
 with mlflow.start_run():
 
     # Load dataset
-    data = pd.read_csv("data/anomalies.csv")
+    data = pd.read_csv("/app/data/anomalies.csv")
 
     # Select features
     features = data[["acc_x", "acc_y", "acc_z", "speed_diff", "magnitude", "road_type"]]
