@@ -1,0 +1,10 @@
+artifact_location: file:///C:/Users/Jahnavi Prakash/MLOPS-Miniproject-1/mlruns/236295309487279289/models/m-9b2ece61669844539defaaeb884bbd67/artifacts
+creation_timestamp: 1759752536840
+experiment_id: '236295309487279289'
+last_updated_timestamp: 1759752540394
+model_id: m-9b2ece61669844539defaaeb884bbd67
+model_type: null
+name: kmeans_model
+source_run_id: 026fdf17e4a846f38a289d0eb0b8519b
+status: 2
+status_message: null

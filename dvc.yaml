@@ -1,0 +1,9 @@
+stages:
+  train:
+    cmd: python app.py
+    deps:
+      - app.py
+      - data/anomalies.csv
+    outs:
+      - output.csv
+      - model.pkl

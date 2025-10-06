@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/Jahnavi Prakash/MLOPS-Miniproject-1/mlruns/236295309487279289/ccd989971acf47ed8577cddbf9e1b189/artifacts
+end_time: 1759752297830
+entry_point_name: ''
+experiment_id: '236295309487279289'
+lifecycle_stage: active
+run_id: ccd989971acf47ed8577cddbf9e1b189
+run_name: gaudy-sheep-156
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1759752290295
+status: 3
+tags: []
+user_id: Jahnavi Prakash
