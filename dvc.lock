@@ -1,22 +1,22 @@
 schema: '2.0'
 stages:
   train:
-    cmd: python app.py
+    cmd: python train_if_needed.py
     deps:
     - path: app.py
       hash: md5
-      md5: 73ea984f79191c02d544a5241225ffd9
-      size: 2299
+      md5: 07619a5f819d95fccf3c514a328cd722
+      size: 2472
     - path: data/anomalies.csv
       hash: md5
-      md5: 46d9c00ea2006f85a5f1335ea80cde4a
-      size: 1422075
-    outs:
-    - path: model.pkl
+      md5: c16038d39ffe1ed88829f8dc4e51c0ad
+      size: 1422077
+    - path: train_if_needed.py
       hash: md5
-      md5: f4cf465039b04e868c438e31871cb7ec
-      size: 32199
+      md5: 7190b31e00296bedb622cfe2a0d96418
+      size: 2218
+    outs:
     - path: output.csv
       hash: md5
-      md5: e1a7500762decb80e2bbe9a43d49c259
-      size: 1581635
+      md5: cc0f19090748bedcd753966d240ea798
+      size: 1581625

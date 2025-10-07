@@ -1,9 +1,10 @@
 stages:
   train:
-    cmd: python app.py
+    cmd: python train_if_needed.py
     deps:
       - app.py
+      - train_if_needed.py
       - data/anomalies.csv
     outs:
       - output.csv
-      - model.pkl
+  
