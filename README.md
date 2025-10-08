@@ -72,7 +72,7 @@ stages:
 ### 1️⃣ Install Dependencies
 
 ```bash
-pip install dvc mlflow scikit-learn pandas
+pip install -r requirements.txt
 ```
 
 ### 2️⃣ Initialize DVC
