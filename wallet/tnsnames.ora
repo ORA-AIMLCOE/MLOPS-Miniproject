@@ -1,0 +1,8 @@
+sandbox_high = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.ap-mumbai-1.oraclecloud.com))(connect_data=(service_name=g9294bf6df9f826_sandbox_high.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
+
+sandbox_low = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.ap-mumbai-1.oraclecloud.com))(connect_data=(service_name=g9294bf6df9f826_sandbox_low.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
+
+sandbox_medium = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.ap-mumbai-1.oraclecloud.com))(connect_data=(service_name=g9294bf6df9f826_sandbox_medium.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
+
+
+
