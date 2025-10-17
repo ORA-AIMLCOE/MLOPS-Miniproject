@@ -1,0 +1,14 @@
+artifact_uri: mlflow-artifacts:/228451671364783908/3971abab05e846df96067361354a3d95/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '228451671364783908'
+lifecycle_stage: active
+run_id: 3971abab05e846df96067361354a3d95
+run_name: melodic-steed-101
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1760523697408
+status: 1
+tags: []
+user_id: Jahnavi Prakash

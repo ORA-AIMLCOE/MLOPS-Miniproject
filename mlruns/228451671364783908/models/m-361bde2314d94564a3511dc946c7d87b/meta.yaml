@@ -1,0 +1,10 @@
+artifact_location: mlflow-artifacts:/228451671364783908/models/m-361bde2314d94564a3511dc946c7d87b/artifacts
+creation_timestamp: 1760518611238
+experiment_id: '228451671364783908'
+last_updated_timestamp: 1760518616934
+model_id: m-361bde2314d94564a3511dc946c7d87b
+model_type: ''
+name: kmeans_model_20251015_142648
+source_run_id: 0c8650fd20604ba880acb894d703c88d
+status: 2
+status_message: null

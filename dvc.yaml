@@ -1,10 +1,18 @@
 stages:
-  train:
+  evaluate_and_train:
     cmd: python train_if_needed.py
     deps:
-      - app.py
-      - train_if_needed.py
       - data/anomalies.csv
+      - train_if_needed.py
+      - app.py
+      - params.yaml
+    params:
+      - model.silhouette_threshold
+      - model.inertia_threshold
+    metrics:
+      - model_metrics.json:
+          cache: false
     outs:
       - output.csv
-  
+      - models/
+      - model_metrics_history.json

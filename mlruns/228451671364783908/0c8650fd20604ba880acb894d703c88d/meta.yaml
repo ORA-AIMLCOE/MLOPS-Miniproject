@@ -1,0 +1,14 @@
+artifact_uri: mlflow-artifacts:/228451671364783908/0c8650fd20604ba880acb894d703c88d/artifacts
+end_time: 1760518864779
+entry_point_name: ''
+experiment_id: '228451671364783908'
+lifecycle_stage: active
+run_id: 0c8650fd20604ba880acb894d703c88d
+run_name: polite-turtle-355
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1760518608730
+status: 3
+tags: []
+user_id: Jahnavi Prakash

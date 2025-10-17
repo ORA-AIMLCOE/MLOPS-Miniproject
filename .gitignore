@@ -2,3 +2,5 @@
 /output.csv
 /model.pkl
 /models
+/data_statistics.json
+/model_metrics_history.json

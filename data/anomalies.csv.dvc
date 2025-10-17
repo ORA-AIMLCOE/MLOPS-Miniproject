@@ -1,5 +1,5 @@
 outs:
-- md5: c16038d39ffe1ed88829f8dc4e51c0ad
-  size: 1422077
+- md5: dfec3645270112ec6754a94c4d9b4ef4
+  size: 1422079
   hash: md5
   path: anomalies.csv

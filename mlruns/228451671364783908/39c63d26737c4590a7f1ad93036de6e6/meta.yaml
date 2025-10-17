@@ -1,0 +1,14 @@
+artifact_uri: mlflow-artifacts:/228451671364783908/39c63d26737c4590a7f1ad93036de6e6/artifacts
+end_time: 1760522496247
+entry_point_name: ''
+experiment_id: '228451671364783908'
+lifecycle_stage: active
+run_id: 39c63d26737c4590a7f1ad93036de6e6
+run_name: silent-yak-271
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1760522240129
+status: 3
+tags: []
+user_id: Jahnavi Prakash

@@ -5,18 +5,59 @@ stages:
     deps:
     - path: app.py
       hash: md5
-      md5: 07619a5f819d95fccf3c514a328cd722
-      size: 2472
+      md5: ccd1ca3d834b58fab5f6a1d062599d30
+      size: 6983
     - path: data/anomalies.csv
       hash: md5
-      md5: c16038d39ffe1ed88829f8dc4e51c0ad
-      size: 1422077
+      md5: a1fa71c5451aa95f78b4cdddde63cc14
+      size: 1422081
     - path: train_if_needed.py
       hash: md5
-      md5: 7190b31e00296bedb622cfe2a0d96418
-      size: 2218
+      md5: 7d22c6db54e4e413bd4ecbd1b955afa4
+      size: 6286
     outs:
     - path: output.csv
       hash: md5
-      md5: cc0f19090748bedcd753966d240ea798
-      size: 1581625
+      md5: 252d975429755e0b8549c77e5b9c0354
+      size: 1581635
+  evaluate_and_train:
+    cmd: python train_if_needed.py
+    deps:
+    - path: app.py
+      hash: md5
+      md5: 3b3b6953b4225c8003fb2af39ff1bb79
+      size: 7558
+    - path: data/anomalies.csv
+      hash: md5
+      md5: dfec3645270112ec6754a94c4d9b4ef4
+      size: 1422079
+    - path: params.yaml
+      hash: md5
+      md5: 201292f809a60a3f7a25d292d0dd3fa2
+      size: 128
+    - path: train_if_needed.py
+      hash: md5
+      md5: aeca72c157b09616546368bc5f917d08
+      size: 11375
+    params:
+      params.yaml:
+        model.inertia_threshold: 40000
+        model.silhouette_threshold: 0.5
+    outs:
+    - path: model_metrics.json
+      hash: md5
+      md5: aefe41470ae4245b8be8503e22a36a62
+      size: 198
+    - path: model_metrics_history.json
+      hash: md5
+      md5: 006cb6c51998f2b205dfb32fc8b099cb
+      size: 194
+    - path: models/
+      hash: md5
+      md5: 35bffd104dbd877749676d386bb73e7f.dir
+      size: 32199
+      nfiles: 1
+    - path: output.csv
+      hash: md5
+      md5: dde0950decb9a94792dd362f13aff1c5
+      size: 1581639

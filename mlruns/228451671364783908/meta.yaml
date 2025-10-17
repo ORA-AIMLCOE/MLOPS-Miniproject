@@ -1,0 +1,6 @@
+artifact_location: mlflow-artifacts:/228451671364783908
+creation_time: 1760518426900
+experiment_id: '228451671364783908'
+last_update_time: 1760518426900
+lifecycle_stage: active
+name: pothole_detection

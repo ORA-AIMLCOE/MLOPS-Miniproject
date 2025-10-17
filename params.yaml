@@ -1,0 +1,6 @@
+model:
+  n_clusters: 2
+  random_state: 42
+  silhouette_threshold: 0.5
+  inertia_threshold: 40000
+  datadrift_threshold: 0.1

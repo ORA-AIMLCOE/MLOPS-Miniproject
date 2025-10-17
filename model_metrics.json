@@ -1,0 +1,10 @@
+{
+  "model": {
+    "silhouette_score": 0.30586041108089,
+    "inertia": 36690.76046937183,
+    "n_clusters": 2,
+    "data_size": 7874,
+    "model_version": "4",
+    "stage": "Staging"
+  }
+}
