@@ -92,7 +92,7 @@ def main():
         # cursor = connection.cursor()        
         print("✅ Connected successfully.")
 
-        insert_data(connection, df)
+        # insert_data(connection, df)
 
     except Exception as e:
         print(f"❌ Error: {e}")

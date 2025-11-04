@@ -1,0 +1,2 @@
+['db "ora"']
+    url = oracle+cx_oracle://MLOPS:thgnf66hm3uDkbYz@(description=(retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.ap-mumbai-1.oraclecloud.com))(connect_data=(service_name=g9294bf6df9f826_sandbox_high.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))

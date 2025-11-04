@@ -1,0 +1,22 @@
+artifact_path: file:///C:/Users/Tuttagunta Sowmya/Documents/AIML/MLOPS/my_work/mlruns/1/models/m-e92c8db281bb44c4a2a65ef22d6b082d/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.11.13
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.7.2
+mlflow_version: 3.5.1
+model_id: m-e92c8db281bb44c4a2a65ef22d6b082d
+model_size_bytes: 32499
+model_uuid: m-e92c8db281bb44c4a2a65ef22d6b082d
+prompts: null
+run_id: 6af274c33ca74b6c832674f66ff07d2b
+utc_time_created: '2025-10-23 10:30:26.809135'

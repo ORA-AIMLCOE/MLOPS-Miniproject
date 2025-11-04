@@ -1,0 +1,10 @@
+import cx_Oracle
+# If you are on macOS or Linux, you might need to point to the client libraries explicitly.
+# cx_Oracle.init_oracle_client(lib_dir='/path/to/your/instant/client')
+try:
+    dsn = cx_Oracle.makedsn("adb.ap-mumbai-1.oraclecloud.com", "1522", service_name="sandbox_high")
+    connection = cx_Oracle.connect(user="MLOPS", password="thgnf66hm3uDkbYz", dsn=dsn)
+    print("Connection successful!")
+    connection.close()
+except Exception as e:
+    print(f"Connection failed: {e}")
